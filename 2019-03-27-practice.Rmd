@@ -24,21 +24,188 @@ dtObjectVector<-ymd_hms(
 ```{r}
 class(dtObject)
 ```
-
-
 ```{r}
 Sys.timezone()
 ```
 ```{r}
 twDateTime <- ymd_hms("2019-03-18 14:04:00", tz="Asia/Taipei")
+as.double(twDateTime)
 ```
-
 ```{r}
 LisbonDateTime <- with_tz(twDateTime,tzone="Europe/Lisbon")
+as.double(LisbonDateTime)
+```
+```{r}
+ParisDateTime <- with_tz(twDateTime,tzone = "Europe/Paris")
+as.double(ParisDateTime)
+```
+```{r}
+typeof(LisbonDateTime)
+as.integer(LisbonDateTime)
+as.double(LisbonDateTime)
+```
+```{r}
+typeof(ParisDateTime)
+as.integer(ParisDateTime)
+as.double(ParisDateTime)
+```
+```{r}
+TwDateTime <- mdy_hms("03-27-2019 14:00:00")
+as.double(TwDateTime)
 ```
 
 ```{r}
-
+NowDateTime <- ymd("2018-09-11")
+NowDateTime2<- mdy("March 3, 2019")
+as.double(NowDateTime)
+as.double(NowDateTime2)
 ```
+```{r}
+as.integer(ymd("1970-01-01"))
+as.integer(ymd("1970-01-02"))
+as.integer(ymd("2019-03-11"))
+```
+```{r}
+a <- c(1, 5, -3)
+b <- c(0.5, 12, 2)
+a-b
+a+b
+a*b
+a/b
+class(a-b)
+class(a+b)
+class(a*b)
+class(a/b)
+```
+```{r}
+a <- c(1, 5, -3)
+b <- c(0.5, 12, 2)
+aL <- c(1L, 5L, -3L)
+bL <- c(-2L, -4L, 8L)
+```
+
+```{r}
+a+bL
+class(a+bL)
+aL+bL
+class(aL+bL)
+class(aL/bL)
+class(aL*bL)
+```
+```{r}
+c <- 4
+c+a
+```
+```{r}
+a^b
+a**b
+a %% b
+```
+```{r}
+twDateTime <- ymd_hms("2019-03-18 14:04:00", tz="Asia/Taipei")
+twDateTime+1
+```
+```{r}
+DateTime1 <- ymd("2019-08-11")
+DateTime2 <- ymd("2000-02-01")
+DateTime1-DateTime2
+```
+```{r}
+BirthDate <- ymd("1999-08-03")
+BirthDate1 <- ymd("1992-11-27")
+NowDate <- ymd("2019-03-27")
+NowDate-BirthDate
+NowDate-BirthDate1
+BirthDate-BirthDate1
+```
+
+```{r}
+DateTime3 <- ymd_hms("2019-08-03 11:27:52")
+DateTime4 <- ymd_hms("2019-08-05 11:27:52")
+DateTime5 <- ymd_hms("2019-08-05 11:52:27")
+DateTime4-DateTime3
+DateTime5-DateTime4
+```
+```{r}
+as.double(DateTime5-DateTime4)
+```
+```{r}
+startingDate <- ymd("2000-02-17")
+```
+
+```{r}
+startingDate+years(1)
+```
+```{r}
+startingDate + dyears(1)
+```
+```{r}
+ymd("2000-02-01") -> startingDate
+ymd("2019-08-11") -> endingDate
+endingDate - startingDate
+```
+##relational
+
+```{r}
+x <- 5
+y <- 7
+x2 <- c(1,5,10)
+y2 <- c(-1,5,20)
+```
+
+```{r}
+x >= y
+x == y
+x < y
+```
+```{r}
+x2
+y2
+x2 < y2
+```
+```{r}
+x3 <- c("小明","小花")
+y3 <- c("小明","小華")
+```
+```{r}
+x4 <- c(1,5,8)
+y4 <- c(5,8)
+
+x4
+y4
+x4 %in% y4
+```
+```{r}
+x5 <- c("台北市","新北市","高雄市")
+y5 <- c("台北市","新北市")
+
+x5
+y5
+x5 %in% y5
+```
+
+```{r}
+x2 <- c(1,NA,10)
+y2 <- c(-1,NA,20)
+
+x3 <- c(NA,"小花")
+y3 <- c(NA,"小華")
+```
+
+```{r}
+x2
+y2
+x2 == y2
+```
+```{r}
+x2
+is.na(x2)
+```
+```{r}
+sum(x2)
+sum(x2,na.rm =F)
+sum(x2,na.rm =T) 
+```
+
 
 
