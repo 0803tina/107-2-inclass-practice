@@ -104,6 +104,7 @@ y5
 (x5 %in% greatTaipei) | (y5=="女")
 ```
 ```{r}
+which(y5=="女")
 which((x5 %in% greatTaipei) | (y5=="女"))
 ```
 ```{r}
