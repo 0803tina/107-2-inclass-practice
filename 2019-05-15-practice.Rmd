@@ -1,0 +1,118 @@
+---
+title: '2019-05-08'
+author: "林茂廷"
+date: "5/8/2019"
+output: html_document
+---
+
+```{r}
+Vector1 <- letters[1:6]
+Vector1
+
+names(Vector1)
+```
+
+```{r}
+names(Vector1) <- c('名稱1','名稱2','名稱3','名稱4','名稱5','名稱6')
+names(Vector1)
+```
+
+```{r}
+Vector1[["名稱4"]]
+```
+
+#colnames/rownames
+
+```{r}
+StuDF2 <- data.frame(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50),
+  stringsAsFactors = FALSE
+  )
+StuDF2 
+```
+
+```{r}
+colnames(StuDF2)
+names(StuDF2)
+```
+
+```{r}
+colnames(StuDF2) <- c("col1","col2","col3")
+colnames(StuDF2)
+StuDF2
+```
+
+#只改col2的名稱
+
+```{r}
+colnames(StuDF2)[[2]] <- c("姓名")
+colnames(StuDF2)
+StuDF2
+```
+
+#改col2 col3的名稱
+
+```{r}
+colnames(StuDF2)[c(2,3)] <- c("name","grade")
+colnames(StuDF2)
+StuDF2
+```
+
+```{r}
+StuDF <- data.frame(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50)
+  )
+StuDF 
+```
+
+```{r}
+colnames(StuDF)[c(1,2,3)] <- c("StudentID","name","grade")
+colnames(StuDF)
+StuDF
+```
+
+```{r}
+library(stringr)
+rownames(StuDF2)
+rownames(StuDF2)[c(1,2,3)] <- c("StudentID","name","grade")
+rownames(StuDF2)
+StuDF2
+```
+
+#新增取代
+
+```{r}
+a <- c("1","b","TRUE")
+a
+a[[2]] <- "c" # 元素存在
+a[[5]] <- "7" # 元素不存在
+a
+```
+
+```{r}
+b <- list(
+  元素1=1,
+  元素2="Hello",
+  元素3=TRUE
+)
+```
+
+```{r}
+b[[3]] <- FALSE
+b[[5]] <- "7"
+b
+```
+
+```{r}
+b$元素3 <- TRUE
+b
+```
+
+```{r}
+
+```
+
