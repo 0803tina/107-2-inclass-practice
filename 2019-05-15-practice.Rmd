@@ -1,7 +1,7 @@
 ---
-title: '2019-05-08'
+title: '2019-05-15'
 author: "林茂廷"
-date: "5/8/2019"
+date: "5/15/2019"
 output: html_document
 ---
 
@@ -242,6 +242,7 @@ sum(subSample$學期成績*subSample$學分數)/
 ```
 
 ```{r}
+gpa_fun
 gpa_fun("223S63286")
 gpa_fun("105S60ba1")
 ```
