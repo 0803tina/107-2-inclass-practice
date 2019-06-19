@@ -78,8 +78,8 @@ for(i in seq_along(gmailAddress)){
 
 ```{r}
 for(i in seq_along(gmailAddress)){
-  if(!(str_detect(gmailAddress[[i]],"@gmali.com"))){
-    gmailAddress[[i]] <- str_c(gmailAddress[[i]],"@gmali.com")
+  if(!(str_detect(gmailAddress[[i]],"@gmail.com"))){
+    gmailAddress[[i]] <- str_c(gmailAddress[[i]],"@gmail.com")
   }
 }
 
@@ -271,6 +271,115 @@ for(i in seq_along(commitHistory)){
 }
 commitHistory[true]$commit$committer$date
 ```
+
+```{r}
+saveEveryThing <- vector("list",length(commitHistory))
+saveSameLogi <- vector("logical",length(commitHistory))
+```
+
+
+```{r}
+commitHistory
+```
+
+
+
+```{r}
+i <- 1
+
+author_i <- commitHistory[[i]]$commit$author$name
+committer_i <- commitHistory[[i]]$commit$committer$name
+commitDate_i <- commitHistory[[i]]$commit$committer$date
+
+(author_i==committer_i) -> saveSameLogi[[i]]
+list(
+  author=author_i,
+  committer=committer_i,
+  commitDate=commitDate_i
+) -> saveEveryThing[[i]]
+```
+
+
+```{r}
+saveEveryThing
+saveSameLogi
+```
+
+
+
+```{r}
+saveEveryThing <- vector("list",length(commitHistory))
+saveSameLogi <- vector("logical",length(commitHistory))
+for(i in seq_along(commitHistory)){
+  author_i <- commitHistory[[i]]$commit$author$name
+  committer_i <- commitHistory[[i]]$commit$committer$name
+  commitDate_i <- commitHistory[[i]]$commit$committer$date
+
+  (author_i == committer_i) -> saveSameLogi[[i]]
+
+  list(
+    author=author_i,
+    committer=committer_i,
+    commitDate=commitDate_i
+  ) -> saveEveryThing[[i]]  
+}
+```
+
+```{r}
+saveEveryThing
+```
+
+
+```{r}
+print(saveSameLogi)
+```
+
+```{r}
+saveEveryThing[saveSameLogi] -> saveValidCommitDate
+saveValidCommitDate
+```
+
+
+```{r}
+load(url("https://www.dropbox.com/s/qnz9paigf61yjus/commitHistory.Rda?raw=1"))
+```
+
+
+```{r}
+saveCommitAuthor1 <- vector("character",length(commitHistory))
+saveCommitCommitter1 <- vector("character",length(commitHistory))
+```
+
+```{r}
+for( i in seq_along(commitHistory)){
+  saveCommitAuthor1[[i]] <- commitHistory[[i]]$commit$author$name
+}
+saveCommitAuthor1
+```
+
+```{r}
+for( i in seq_along(commitHistory)){
+  saveCommitCommitter1[[i]] <- commitHistory[[i]]$commit$committer$name
+}
+saveCommitCommitter1
+```
+
+```{r}
+savelogi <- vector("logical",length(commitHistory))
+savedate <- vector("character",length(commitHistory))
+savedate1 <- vector("character",length(commitHistory))                   
+for(i in seq_along(commitHistory)){
+  savelogi[[i]] <- saveCommitAuthor1[[i]]== saveCommitCommitter1[[i]]
+  savedate[[i]] <- commitHistory[[i]]$commit$committer$date
+}
+savedate1 <- savedate[savelogi]
+savelogi
+savedate1
+```
+
+
+
+
 
 
 

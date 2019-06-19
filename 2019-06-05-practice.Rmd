@@ -105,3 +105,56 @@ for(i in seq_along(gmailAddress)){
 ```
 
 
+```{r}
+EconCourseSelectionInfo <- list(
+  "101"=list(
+    url="http://www.econ.ntpu.edu.tw/econ/files/Way/2016072195021.doc"),
+  "104"=list(
+    url="http://www.econ.ntpu.edu.tw/econ/files/Way/2016072195041.doc"),
+  "105"=list(
+    url="http://www.econ.ntpu.edu.tw/econ/files/Way/20170516144353.doc"),
+  "107"=list(
+    url="http://www.econ.ntpu.edu.tw/econ/files/Way/20180518121643.pdf")
+)
+EconCourseSelectionInfo
+```
+
+
+```{r}
+search_courseRules <- function(entranceYear,EconCourseSelectionInfo){
+  year1 <- as.integer(entranceYear)
+  if(year1 >= "101" & year1 < "104" ){
+    output <- EconCourseSelectionInfo[["101"]]$url
+  }else if(year1 >= "104" & year1 < "105"){
+    output <- EconCourseSelectionInfo[["104"]]$url
+  }else if(year1 >= "105" & year1 < "107"){
+    output <- EconCourseSelectionInfo[["105"]]$url
+  }else if(year1 >= "107"){
+    output <- EconCourseSelectionInfo[["107"]]$url
+  }else{
+    output <- "很抱歉沒有您入學年的資訊，請打系辦電話"
+  }
+  rerurn (output)
+}
+search_courseRules
+```
+
+
+```{r}
+search_courseRules_flexible <- function(entranceYear,courseSelectionInfo){
+  as.numeric(entranceYear) -> year2
+  as.numeric(names(courseSelectionInfo)) -> year3
+  loginum <- year2 >= year3
+  if(any(loginum)){
+    num1 <- max(year3[loginum])
+    output <- courseSelectionInfo[[num1]]$url
+  }else{
+    output <- "很抱歉沒有您入學年的資訊，請打系辦電話"
+  }
+  return(output)
+}
+```
+
+
+
+
